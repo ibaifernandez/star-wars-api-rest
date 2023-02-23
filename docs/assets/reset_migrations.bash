@@ -1,4 +1,3 @@
-
 rm -R -f ./migrations &&
 pipenv run init &&
 psql -U gitpod -c 'DROP DATABASE example;' || true &&
