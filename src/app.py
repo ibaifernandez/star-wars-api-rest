@@ -8,7 +8,7 @@ from flask_cors import CORS
 from utils import APIException, generate_sitemap
 from admin import setup_admin
 
-# Importing necessary elmenets from models.py
+# Importing necessary elements from models.py
 from models import db, Users, Characters, Planets, Favorites    # Why is 'db' imported?
 
 app = Flask(__name__)
@@ -57,9 +57,9 @@ def get_user(user_id):
 @app.route('/user/<int:user_id>/favorites',methods=['GET'])
 def get_user_favorites(user_id):
     user_favorites = Favorites.query.filter_by(user_id=user_id).first() # all() ???
-#    list_of_user_favorites = list(map(lambda user_favorite: user_favorite.serialize(), user_favorites))
+#   list_of_user_favorites = list(map(lambda user_favorite: user_favorite.serialize(), user_favorites))
     if user_favorites is None:
-        response_body = {"Message": "No favorites to show!"}
+        response_body = {"Message": "No users favorites to show!"}
         return jsonify(response_body), 404
     return jsonify(user_favorites.serialize()), 200
 
